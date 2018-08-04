@@ -1,0 +1,18 @@
+
+<div class="index-page">
+
+  <div class="index-bar">
+    {{#if currentUser}}
+    <p>Welcome Back {{currentUser.username}}</p>
+    {{else}}
+    <p>Please <a href="/login">Login</a></p>
+    {{/if}}
+  </div>
+
+
+  <div class="index-content">
+    {{> players}}
+    {{> factions}}
+  </div>
+
+</div>

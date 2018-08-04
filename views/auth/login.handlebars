@@ -1,0 +1,21 @@
+<div class="auth-page">
+
+  <div class="auth-box">
+    <form id="login-box" method="POST" action="/login">
+        <div class="top-lab">Login</div>
+
+        {{#if error}}
+        <div id="error">{{{error}}}</div>
+        {{/if}}
+
+        <input class="field" placeholder="Username" name="username" type="text">
+        <input class="field" placeholder="Password" name="password" type="password">
+
+        <input class="auth-btn btn blue" value="Login" type="submit">
+
+        <div class="bot-links">
+            <a>Forgot Password</a> - <a href="/register">Sign up</a>
+        </div>
+    </form>
+
+  </div>

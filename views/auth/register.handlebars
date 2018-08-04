@@ -1,0 +1,26 @@
+<div class="auth-page">
+
+  <div class="auth-box">
+    <form id="login-box" method="POST" action="/register">
+        <div class="top-lab">Register</div>
+
+        {{#if error}}
+        <div id="error">{{{error}}}</div>
+        {{/if}}
+
+        <input class="field" maxlength="16" placeholder="EpicDuel Username" name="username" type="text">
+        <input class="field" placeholder="Password" name="password" type="password">
+        <input class="field" placeholder="Repeat Password" name="password2" type="password">
+
+        <div class="g-recaptcha" data-sitekey="6LciD0EUAAAAAMSM4b2xRawGOzSD0ke7mlaY-ZpQ"></div>
+
+        <input class="auth-btn btn blue" value="Register" type="submit">
+
+        <div class="bot-links">
+            <a href="/login">Login</a> | <a href="/privacy">Privacy Policy</a>
+        </div>
+    </form>
+
+  </div>
+
+</div>
