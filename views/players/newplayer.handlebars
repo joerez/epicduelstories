@@ -1,0 +1,23 @@
+<div class="auth-page">
+
+  <div class="auth-box">
+    <form id="login-box" method="POST" action="/players/new">
+        <div class="top-lab">Submit New Player</div>
+
+        {{#if error}}
+        <div id="error">{{{error}}}</div>
+        {{/if}}
+
+        <input class="field" maxlength="16" placeholder="Player Username" name="username" type="text">
+        <input class="field" placeholder="Non-Biased Description" name="description" type="text">
+        <input class="field" placeholder="imgurl" name="imgurl" type="text">
+
+        <div class="g-recaptcha" data-sitekey="6LciD0EUAAAAAMSM4b2xRawGOzSD0ke7mlaY-ZpQ"></div>
+
+        <input class="auth-btn btn blue" value="Submit Player" type="submit">
+
+    </form>
+
+  </div>
+
+</div>

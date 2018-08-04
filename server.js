@@ -27,7 +27,7 @@ app.use(bodyParser.json());
 
 var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/codingforkids', {  });
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/epicduelstories', {  });
 
 
 // override with POST having ?_method=DELETE or ?_method=PUT
@@ -65,10 +65,13 @@ app.use(checkAuth);
 //ROUTES
 require('./controllers/auth.js')(app);
 require('./controllers/index.js')(app);
+require('./controllers/player.js')(app);
+require('./controllers/factions.js')(app);
+
 
 
 const port = process.env.PORT || 3000
 
 app.listen(port, () => {
-  console.log(`CodingForKids listening on port ${port}!`);
+  console.log(`Epic Duel Stories listening on port ${port}!`);
 })
