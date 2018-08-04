@@ -3,6 +3,13 @@
     <a class="btn blue waves-effect waves-white" href="/players/new">Submit Player</a>
   </div>
 
-  <div class="grid"></div>
+  <div class="grid">
+    {{#each players}}
+      <div class="player">
+        <img src={{this.imgurl}} />
+        <p><a href="/players/{{this.username}}">{{this.username}}</a></p>
+      </div>
+    {{/each}}
 
+  </div>
 </div>
