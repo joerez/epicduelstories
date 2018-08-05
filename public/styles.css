@@ -284,3 +284,35 @@ p {
   height: 10px;
   margin: 0;
 }
+
+
+
+@media (max-width: 900px) and (min-width: 300px) {
+
+.brand-logo {
+  font-size: 1rem !important;
+}
+
+.hidden-on-mobile {
+  display: none;
+}
+
+.player-section {
+  margin: 0;
+  width: 48%;
+  margin-left: 1%;
+  margin-right: 1%;
+}
+
+.faction-section {
+  margin: 0;
+  margin-left: 1%;
+  margin-right: 1%;
+  width: 48%;
+}
+
+.index-bar {
+  font-size: 90%;
+}
+
+}

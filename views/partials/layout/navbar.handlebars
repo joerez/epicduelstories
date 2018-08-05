@@ -5,9 +5,6 @@
       {{#if currentUser.mod}}
       <li><a href="/mod">Mod</a></li>
       {{/if}}
-
-      <li><a href="/">Players</a></li>
-      <li><a href="/">Factions</a></li>
       {{#if currentUser}}
       <li><a href="/profile">{{currentUser.username}}</a></li>
       <li><a href="/logout">Logout</a></li>
@@ -15,6 +12,7 @@
         <li><a href="/login">Login</a></li>
         <li><a href="/register">Register</a></li>
       {{/if}}
+
     </ul>
   </div>
 </nav>
