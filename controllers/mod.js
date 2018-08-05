@@ -208,6 +208,27 @@ app.post('/comments/delete/:commentid', function (req, res) {
   })
 
 
+  //EDIT FACTION PAGE
+  app.get('/factions/:factionname/edit', (req, res) => {
+
+    Faction.find({name : req.params.factionname}).then((factions) => {
+    Comment.find({ factionId : factions[0].id }).then((comments) => {
+
+
+    let currentUser;
+    if (req.user) {
+      User.findById(req.user._id, (err, user) => {
+
+        res.render('factions/editfaction', {currentUser: user, factions});
+      })
+    } else {
+    res.send('no');
+    }
+  })
+  })
+  })
+
+
 
 
   //UPDATE PLAYER
@@ -238,6 +259,31 @@ app.post('/comments/delete/:commentid', function (req, res) {
 
 
 
+//UPDATE FACTION
+app.post('/factions/:id/edit', (req, res) => {
+  if (req.user) {
+    User.findById(req.user._id, (err, user) => {
+      if (user.mod) {
+
+
+             Faction.findByIdAndUpdate(req.params.id, req.body).then((faction) => {
+               res.redirect('/')
+             }).catch((err) => {
+               console.log(err.message)
+
+             })
+           }
+       else
+           //error code
+           {
+             res.redirect('/robot');
+           }
+   });
+
+
+}
+
+})
 
 
 
