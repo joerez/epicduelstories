@@ -10,8 +10,8 @@ module.exports = (app) => {
     app.get('/', (req, res) => {
       let currentUser;
 
-      Player.find({pending : true}).then((players) => {
-        Faction.find({pending : true}).then((factions) => {
+      Player.find({pending : false}).then((players) => {
+        Faction.find({pending : false}).then((factions) => {
 
 
       if (req.user) {

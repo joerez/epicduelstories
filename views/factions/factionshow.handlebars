@@ -15,9 +15,8 @@
 
   <h3 align="center">Stories</h3>
   <div class="stories-con">
-    {{#each comments}}
-      <div class="comment-box">
-        <p>By: <a href="/profiles/{{this.username}}">{{this.username}}</a></p>
+    {{#each ../comments}}
+      <div class="comment-box">{{#if ../../currentUser.mod}}  <div class="admin-buttons-comment">  <!--Delete-->   <form method="POST" action="/comments/delete/{{this._id}}"><button class="delete-button" type="submit"><i class="material-icons">delete</i></button></form>  </div>{{/if}}<p>By: <a href="/profiles/{{this.username}}">{{this.username}}</a></p>
         <p><b>{{this.title}}</b></p>
         <p>{{this.content}}</p>
       </div>

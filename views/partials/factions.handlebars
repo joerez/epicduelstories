@@ -9,6 +9,28 @@
       <div class="player">
         <img src={{this.imgurl}} />
         <p><a href="/factions/{{this.name}}">{{this.name}}</a></p>
+
+
+
+        {{#if ../currentUser.mod}}
+
+          <div class="admin-buttons">
+            <!--Delete-->
+            <form method="POST" action="/factions/delete/{{this._id}}">
+              <button class="delete-button" type="submit"><i class="material-icons">delete</i></button>
+            </form>
+
+
+            <!--Approve-->
+            <form class="approveForm" id={{this._id}} method="POST" action="/factions/{{this._id}}">
+              <div class="form-group">
+                <button class="approve-button" type="submit"><i class="material-icons">check</i></button>
+              </div>
+            </form>
+
+          </div>
+        {{/if}}
+
       </div>
     {{/each}}
   </div>

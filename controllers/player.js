@@ -4,6 +4,8 @@ const User = require('../models/user');
 const Player = require('../models/player')
 const Comment = require('../models/comment')
 
+const requireLogin = require('../middleware/requireLogin');
+
 
 let Recaptcha = require('express-recaptcha');
 let recaptcha = new Recaptcha('6LciD0EUAAAAAMSM4b2xRawGOzSD0ke7mlaY-ZpQ', '6LciD0EUAAAAAH4H4CCH0EwKcfbDlQPdMUQe0SFO');
@@ -24,7 +26,7 @@ module.exports = (app) => {
 
 
 //post new player
-app.post('/players/new', (req, res) => {
+app.post('/players/new', requireLogin, (req, res) => {
   Player.findOne({ username : req.body.username }, 'username').then((player) => {
     if (player) {
       // User found
@@ -60,7 +62,8 @@ app.post('/players/new', (req, res) => {
 app.get('/players/:playername', (req, res) => {
 
   Player.find({username : req.params.playername}).then((players) => {
-  Comment.find({playerId : players._id}).then((comments) => {
+    console.log(players.id);
+  Comment.find({ playerId : players[0].id }).then((comments) => {
 
 
   let currentUser;

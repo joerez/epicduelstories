@@ -4,6 +4,8 @@ const User = require('../models/user');
 const Faction = require('../models/faction');
 const Comment = require('../models/comment');
 
+const requireLogin = require('../middleware/requireLogin');
+
 
 let Recaptcha = require('express-recaptcha');
 let recaptcha = new Recaptcha('6LciD0EUAAAAAMSM4b2xRawGOzSD0ke7mlaY-ZpQ', '6LciD0EUAAAAAH4H4CCH0EwKcfbDlQPdMUQe0SFO');
@@ -24,7 +26,7 @@ module.exports = (app) => {
 
 
   //post new faction
-  app.post('/factions/new', (req, res) => {
+  app.post('/factions/new', requireLogin, (req, res) => {
     Faction.findOne({ name : req.body.name }, 'name').then((faction) => {
       if (faction) {
         // faction found
@@ -60,7 +62,7 @@ module.exports = (app) => {
   app.get('/factions/:factionName', (req, res) => {
 
     Faction.find({name : req.params.factionName}).then((factions) => {
-    Comment.find({factionId : factions._id}).then((comments) => {
+    Comment.find({factionId : factions[0]._id}).then((comments) => {
 
 
     let currentUser;

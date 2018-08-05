@@ -1,0 +1,25 @@
+<div class="index-page">
+
+  <div class="index-bar">
+    <p>Welcome back {{currentUser.username}}. Approve players and factions here!</p>
+  </div>
+
+  <div class="index-content">
+    {{> players}}
+    {{> factions}}
+  </div>
+
+<center>
+  <form action="/mod/adminadd" method="post">
+  <input style="width: 300px;" name="addAdmin" placeholder="add new admin">
+  <button class="btn-success" type="submit">Add Admin</button>
+</form>
+<br>
+<br>
+<form action="/mod/playerban" method="post">
+  <input style="width: 300px;" name="banPlayer" placeholder="ban player">
+  <button class="btn-danger" type="submit">Ban Player</button>
+</form>
+</center>
+
+</div>

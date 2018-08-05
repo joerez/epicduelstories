@@ -2,6 +2,10 @@
   <div class="nav-wrapper">
     <a href="/" class="left brand-logo">Epic Duel Stories</a>
     <ul class="right">
+      {{#if currentUser.mod}}
+      <li><a href="/mod">Mod</a></li>
+      {{/if}}
+
       <li><a href="/">Players</a></li>
       <li><a href="/">Factions</a></li>
       {{#if currentUser}}

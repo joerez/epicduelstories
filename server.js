@@ -68,6 +68,7 @@ require('./controllers/index.js')(app);
 require('./controllers/player.js')(app);
 require('./controllers/factions.js')(app);
 require('./controllers/comments.js')(app);
+require('./controllers/mod.js')(app);
 
 
 
