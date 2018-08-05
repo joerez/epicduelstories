@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const FactionSchema = new Schema({
   name        : { type : String, required: true },
   description     : { type: String},
-  imgurl          : { required: false },
+  imgurl          : { type: String, required: false },
   pending         : { type: Boolean, default: true },
   comments : [{}]
 });
