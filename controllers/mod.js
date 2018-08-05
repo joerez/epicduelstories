@@ -87,7 +87,7 @@ module.exports = (app) => {
       User.findById(req.user._id, (err, user) => {
         if (user.mod) {
           User.findOne({username: req.body.addAdmin}, (err, user) => {
-            user.admin = true;
+            user.mod = true;
             user.save((err, user) => {
               console.log(user);
               res.redirect('/mod');
