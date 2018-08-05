@@ -4,8 +4,8 @@ const Schema = mongoose.Schema;
 
 const PlayerSchema = new Schema({
   username        : { type : String, required: true },
-  description     : { type: String},
-  imgurl          : { required: false },
+  description     : { type: String },
+  imgurl          : { type: String, required: false },
   pending         : { type: Boolean, default: true },
   comments : [{}]
 });
