@@ -1,0 +1,26 @@
+{{#each players}}
+<div class="auth-page">
+
+  <div class="auth-box">
+    <form id="login-box" method="POST" action="/players/{{this._id}}/edit">
+        <div class="top-lab">Edit {{this.username}}</div>
+
+        {{#if error}}
+        <div id="error">{{{error}}}</div>
+        {{/if}}
+
+        Username<input class="field" value="{{this.username}}" maxlength="30" placeholder="Player Username" name="username" type="text">
+        Description<input class="field" value="{{this.description}}" placeholder="Non-Biased Description" name="description" type="text">
+        ImgUrl<input class="field" value="{{this.imgurl}}" placeholder="imgurl (ENDING WITH .JPG, .PNG, ETC.)" name="imgurl" type="text">
+
+
+        <input class="auth-btn btn blue" value="Update Player" type="submit">
+        <br />
+        <p>New players must be approved by mods before they appear on the front page</p>
+
+    </form>
+
+  </div>
+
+</div>
+{{/each}}

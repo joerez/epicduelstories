@@ -21,6 +21,8 @@
               <button class="delete-button" type="submit"><i class="material-icons">delete</i></button>
             </form>
 
+            <a class="edit-button" href="players/{{this.username}}/edit"><i class="material-icons">edit</i></a>
+
 
             <!--Approve-->
             <form class="approveForm" id={{this._id}} method="POST" action="/players/{{this._id}}">

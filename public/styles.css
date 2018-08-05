@@ -252,6 +252,15 @@ p {
   margin-right: 5px;
 }
 
+.edit-button {
+  margin-bottom: 3px;
+  padding: 0;
+  background: gold;
+  color: white;
+  float: right;
+  margin-right: 5px;
+}
+
 .admin-buttons {
   margin-top: 5px;
   position: absolute;

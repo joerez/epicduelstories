@@ -182,4 +182,65 @@ app.post('/comments/delete/:commentid', function (req, res) {
     }
   })
 
+
+
+
+
+  //EDIT PLAYER PAGE
+  app.get('/players/:playername/edit', (req, res) => {
+
+    Player.find({username : req.params.playername}).then((players) => {
+      console.log(players.id);
+    Comment.find({ playerId : players[0].id }).then((comments) => {
+
+
+    let currentUser;
+    if (req.user) {
+      User.findById(req.user._id, (err, user) => {
+
+        res.render('players/editplayer', {currentUser: user, players});
+      })
+    } else {
+    res.send('no');
+    }
+  })
+  })
+  })
+
+
+
+
+  //UPDATE PLAYER
+  app.post('/players/:id/edit', (req, res) => {
+    if (req.user) {
+      User.findById(req.user._id, (err, user) => {
+        if (user.mod) {
+
+
+               Player.findByIdAndUpdate(req.params.id, req.body).then((player) => {
+                 res.redirect('back')
+               }).catch((err) => {
+                 console.log(err.message)
+
+               })
+             }
+         else
+             //error code
+             {
+               res.redirect('/robot');
+             }
+     });
+
+
+  }
+
+})
+
+
+
+
+
+
+
+
 }
