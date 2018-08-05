@@ -239,7 +239,7 @@ app.post('/comments/delete/:commentid', function (req, res) {
 
 
                Player.findByIdAndUpdate(req.params.id, req.body).then((player) => {
-                 res.redirect('back')
+                 res.redirect('/mod')
                }).catch((err) => {
                  console.log(err.message)
 
@@ -267,7 +267,7 @@ app.post('/factions/:id/edit', (req, res) => {
 
 
              Faction.findByIdAndUpdate(req.params.id, req.body).then((faction) => {
-               res.redirect('/')
+               res.redirect('/mod')
              }).catch((err) => {
                console.log(err.message)
 
