@@ -1,16 +1,16 @@
 <div class="auth-page">
 
   <div class="auth-box">
-    <form id="login-box" method="POST" action="/register">
+    <form id="login-box" method="POST" action="/factions/new">
         <div class="top-lab">Submit New Faction</div>
 
         {{#if error}}
         <div id="error">{{{error}}}</div>
         {{/if}}
 
-        <input class="field" maxlength="21" placeholder="Faction Name" name="name" type="text">
+        <input class="field" maxlength="16" placeholder="Faction Name" name="name" type="text">
         <input class="field" placeholder="Non-Biased Description" name="description" type="text">
-        <input class="field" placeholder="imgurl" name="imgurl" type="text">
+        <input class="field" placeholder="Flag Image URL" name="imgurl" type="text">
 
         <div class="g-recaptcha" data-sitekey="6LciD0EUAAAAAMSM4b2xRawGOzSD0ke7mlaY-ZpQ"></div>
 

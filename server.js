@@ -67,6 +67,7 @@ require('./controllers/auth.js')(app);
 require('./controllers/index.js')(app);
 require('./controllers/player.js')(app);
 require('./controllers/factions.js')(app);
+require('./controllers/comments.js')(app);
 
 
 

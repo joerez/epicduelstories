@@ -1,0 +1,73 @@
+{{#each players}}
+  <div class="player-show-head">
+    <div class="player">
+      <img src={{this.imgurl}} />
+      <p>{{this.username}}</p>
+    </div>
+    <p class="player-desc">{{this.description}}</p>
+  </div>
+
+  {{#if ../currentUser}}
+  <div class="center-button">
+    <button id="revealer" class="btn blue waves-effect waves-light">Create New Story</button>
+  </div>
+  {{/if}}
+
+  <h3 align="center">Stories</h3>
+  <div class="stories-con">
+    {{#each comments}}
+      <div class="comment-box">
+        <p>By: <a href="/profiles/{{this.username}}">{{this.username}}</a></p>
+        <p><b>{{this.title}}</b></p>
+        <p>{{this.content}}</p>
+      </div>
+    {{/each}}
+  </div>
+
+  {{#if ../currentUser}}
+  <div id="story-pop" class="story-popper">
+    <div class="center">
+    <div id="story-con" class="new-story">
+    <form class="story-form" action="/players/{{this._id}}/new" method="post">
+      <input type="hidden" value="{{this._id}}" name="playerId">
+      <input type="hidden" value="{{../currentUser.username}}" name="username">
+
+      <fieldset>
+        <legend class="whiteout" align="center">New "{{this.username}}" Story</legend>
+
+        <!-- TITLE -->
+        <div class="form-group">
+          <input class="form-control"
+            id="story-title"
+            type="text"
+            name="title"
+            placeholder="Title"/>
+        </div>
+
+        <!-- DESCRIPTION -->
+        <div class="form-group">
+          <textarea class="story-text form-control"
+          id="story-description"
+          name="content"
+          rows="10"
+          placeholder="Your story about {{this.username}}..."/></textarea>
+        </div>
+
+      <!-- BUTTON -->
+      <div class="form-group">
+       <button class="btn btn-primary" type="submit">Submit Story</button>
+      </div>
+    </fieldset>
+    <br />
+    </form>
+    <button id="pop-hide" class="btn red white-text">Hide</button>
+
+    <div>
+  </div>
+    </div>
+  </div>
+  {{else}}
+  <h2 align="center">Login to create a story</h2>
+  {{/if}}
+
+{{/each}}

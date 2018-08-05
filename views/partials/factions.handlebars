@@ -4,7 +4,14 @@
     <a class="btn blue waves-effect waves-white" href="/factions/new">Submit Faction</a>
   </div>
 
-  <div class="grid"></div>
+  <div class="grid">
+    {{#each factions}}
+      <div class="player">
+        <img src={{this.imgurl}} />
+        <p><a href="/factions/{{this.name}}">{{this.name}}</a></p>
+      </div>
+    {{/each}}
+  </div>
 
 
 </div>

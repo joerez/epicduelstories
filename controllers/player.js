@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const User = require('../models/user');
 const Player = require('../models/player')
+const Comment = require('../models/comment')
+
 
 let Recaptcha = require('express-recaptcha');
 let recaptcha = new Recaptcha('6LciD0EUAAAAAMSM4b2xRawGOzSD0ke7mlaY-ZpQ', '6LciD0EUAAAAAH4H4CCH0EwKcfbDlQPdMUQe0SFO');
@@ -53,6 +55,26 @@ app.post('/players/new', (req, res) => {
            }
    });
 });
+
+
+app.get('/players/:playername', (req, res) => {
+
+  Player.find({username : req.params.playername}).then((players) => {
+  Comment.find({playerId : players._id}).then((comments) => {
+
+
+  let currentUser;
+  if (req.user) {
+    User.findById(req.user._id, (err, user) => {
+
+      res.render('players/playershow', {currentUser: user, players, comments});
+    })
+  } else {
+  res.render('players/playershow', { players, comments });
+  }
+})
+})
+})
 
 
 }
