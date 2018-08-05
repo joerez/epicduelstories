@@ -80,4 +80,30 @@ module.exports = (app) => {
 
 
 
+
+
+  //get faction by id
+  app.get('/factionsid/:factionid', (req, res) => {
+
+    Faction.find({_id : req.params.factionid}).then((factions) => {
+    Comment.find({factionId : factions[0]._id}).then((comments) => {
+
+
+    let currentUser;
+    if (req.user) {
+      User.findById(req.user._id, (err, user) => {
+
+        res.render('factions/factionshow', {currentUser: user, factions, comments});
+      })
+    } else {
+    res.render('factions/factionshow', { factions, comments });
+    }
+  })
+  })
+  })
+
+
+
+
+
 }

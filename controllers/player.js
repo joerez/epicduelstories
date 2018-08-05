@@ -80,4 +80,36 @@ app.get('/players/:playername', (req, res) => {
 })
 
 
+
+
+
+
+//player by id
+app.get('/playersid/:playerid', (req, res) => {
+
+  Player.find({_id : req.params.playerid}).then((players) => {
+    console.log(players.id);
+  Comment.find({ playerId : players[0].id }).then((comments) => {
+
+
+  let currentUser;
+  if (req.user) {
+    User.findById(req.user._id, (err, user) => {
+
+      res.render('players/playershow', {currentUser: user, players, comments});
+    })
+  } else {
+  res.render('players/playershow', { players, comments });
+  }
+})
+})
+})
+
+
+
+
+
+
+
+
 }

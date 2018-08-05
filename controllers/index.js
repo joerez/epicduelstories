@@ -3,6 +3,7 @@ const app = express();
 const User = require('../models/user');
 const Player = require('../models/player');
 const Faction = require('../models/faction');
+const Comment = require('../models/comment');
 
 
 module.exports = (app) => {
@@ -24,4 +25,33 @@ module.exports = (app) => {
     })
     })
   })
+
+
+
+  app.get('/recent', (req, res) => {
+    let currentUser;
+
+    Player.find({pending : false}).then((players) => {
+      Faction.find({pending : false}).then((factions) => {
+        Comment.find({}).then((comments) => {
+
+
+    if (req.user) {
+      User.findById(req.user._id, (err, user) => {
+        res.render('index/recent', { currentUser: user, players, factions, comments });
+      })
+    } else {
+    res.render('index/recent', { players, factions, comments });
+    }
+  })
+  })
+})
+
+})
+
+
+
+
+
+
 };
