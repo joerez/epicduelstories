@@ -4,7 +4,7 @@ require('dotenv').config();
 
 var Recaptcha = require('express-recaptcha');
 //import Recaptcha from 'express-recaptcha'
-var recaptcha = new Recaptcha('6LciD0EUAAAAAMSM4b2xRawGOzSD0ke7mlaY-ZpQ', '6LciD0EUAAAAAH4H4CCH0EwKcfbDlQPdMUQe0SFO');
+var recaptcha = new Recaptcha('6Ld9VWgUAAAAANMg2fEBUmbC48-Is_KZEFJ2XbBL', '6Ld9VWgUAAAAAOPH-QfoQ6j8_5PP1na-6yKNuWTB');
 
 
 module.exports = (app) => {
