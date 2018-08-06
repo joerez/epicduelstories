@@ -101,17 +101,13 @@ module.exports = (app) => {
     }
   })
 
-  //ADD NEW MOD
+  //ban
   app.post('/mod/banplayer',  (req, res) => {
     if (req.user) {
       User.findById(req.user._id, (err, user) => {
         if (user.mod) {
           User.findOne({username: req.body.banPlayer}, (err, user) => {
-            if (user.banned = false) {
               user.banned = true;
-            } else {
-              user.banned = false;
-            }
             user.save((err, user) => {
               console.log(user);
               res.redirect('/mod');
