@@ -16,32 +16,64 @@ module.exports = (app) => {
 //post new comment on player
 app.post('/players/:playerid/new', requireLogin, (req, res) => {
 
+  recaptcha.verify(req, function(error, data){
+       if(!error)
+           //success code
+           {
+             const commentData = {...req.body, user: req.user._id, onAPlayer: true}
+             Player.findById(req.params.playerid).then((player) => {
+               Comment.create(commentData).then((comment) => {
+                 comment.save();
+                 res.redirect('back')
+               }).catch((err) => {
+                 console.log(err.message);
+               })
+             })
+           }
+       else
+           //error code
+           {
+             res.send('fill out the captcha');
+           }
+   });
 
 
-  const commentData = {...req.body, user: req.user._id, onAPlayer: true}
-  Player.findById(req.params.playerid).then((player) => {
-    Comment.create(commentData).then((comment) => {
-      comment.save();
-      res.redirect('back')
-    }).catch((err) => {
-      console.log(err.message);
-    })
-  })
 
 })
 
 
 //post new comment on faction
 app.post('/factions/:factionid/new', requireLogin, (req, res) => {
-  const commentData = {...req.body, user: req.user._id, onAFaction: true}
-  Faction.findById(req.params.factionid).then((faction) => {
-    Comment.create(commentData).then((comment) => {
-      comment.save();
-      res.redirect('back')
-    }).catch((err) => {
-      console.log(err.message);
-    })
-  })
+
+
+  recaptcha.verify(req, function(error, data){
+       if(!error)
+           //success code
+           {
+             const commentData = {...req.body, user: req.user._id, onAFaction: true}
+             Faction.findById(req.params.factionid).then((faction) => {
+               Comment.create(commentData).then((comment) => {
+                 comment.save();
+                 res.redirect('back')
+               }).catch((err) => {
+                 console.log(err.message);
+               })
+             })
+           }
+       else
+           //error code
+           {
+             res.send('fill out the captcha');
+           }
+   });
+
+
+
+
+
+
+
+
 
 })
 
