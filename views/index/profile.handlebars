@@ -1,0 +1,15 @@
+
+  <h3 align="center">{{comments.[1].username}}'s Profile</h3>
+  <center><a href="http://epicduel.artix.com/charpage.asp?id={{comments.[1].username}}">View Character Page</a></center>
+  <h4 align="center">Site Activity</h4>
+
+  <div class="stories-con">
+
+    {{#each comments}}
+      <div class="comment-box">{{#if ../currentUser.mod}}  <div class="admin-buttons-comment">  <!--Delete--><form method="POST" action="/comments/delete/{{this._id}}"><button class="delete-button" type="submit"><i class="material-icons">delete</i></button></form>  </div>  {{/if}}        {{#if this.onAPlayer}}<a href="/playersid/{{this.playerId}}">View Player</a>{{else}}<a href="/factionsid/{{this.factionId}}">View Faction</a>{{/if}}<p>
+        By: <a href="/profiles/{{this.username}}">{{this.username}}</a></p>
+        <p><b>{{this.title}}</b></p>
+        <p>{{this.content}}</p>
+      </div>
+    {{/each}}
+  </div>

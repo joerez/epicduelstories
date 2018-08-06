@@ -51,6 +51,23 @@ module.exports = (app) => {
 
 
 
+app.get('/profile/:username', (req, res) => {
+  let currentUser;
+
+
+      Comment.find({username: req.params.username}).then((comments) => {
+
+
+  if (req.user) {
+    User.findById(req.user._id, (err, user) => {
+      res.render('index/profile', { currentUser: user, comments });
+    })
+  } else {
+  res.render('index/profile', { comments });
+  }
+})
+
+})
 
 
 

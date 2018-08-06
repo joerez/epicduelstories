@@ -5,9 +5,9 @@
       {{#if currentUser.mod}}
       <li><a href="/mod">Mod</a></li>
       {{/if}}
-      <li><a href="/recent">Recent Stories</a></li>
+      <li><a href="/recent">Recent</a></li>
       {{#if currentUser}}
-      <li><a href="/profile">{{currentUser.username}}</a></li>
+      <li><a href="/profile/{{currentUser.username}}">{{currentUser.username}}</a></li>
       <li><a href="/logout">Logout</a></li>
       {{else}}
         <li><a href="/login">Login</a></li>
