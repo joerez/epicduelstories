@@ -51,7 +51,7 @@ module.exports = (app) => {
 
 
 
-app.get('/profile/:username', (req, res) => {
+app.get('/profiles/:username', (req, res) => {
   let currentUser;
 
 
