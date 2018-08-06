@@ -1,5 +1,5 @@
 # epicduelstories
-Give this bad boy a ```npm install``` and then an ```npm run start```
+Give this bad boy an ```npm install``` and then an ```npm run start```
 
 # What is this
 Epic Duel Stories is a fan-made website dedicated to preserving memories of people and factions on Epic Duel, my favorite flash game from 2009.
