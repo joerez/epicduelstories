@@ -2,7 +2,7 @@
   <h3 align="center">Recent Stories</h3>
   <div class="stories-con">
     {{#each comments}}
-      <div class="comment-box">{{#if ../currentUser.mod}}  <div class="admin-buttons-comment">  <!--Delete--><form method="POST" action="/comments/delete/{{this._id}}"><button class="delete-button" type="submit"><i class="material-icons">delete</i></button></form>  </div>  {{/if}}{{#if this.playerUserName}}<a href="players/{{this.playerUserName}}">{{this.playerUserName}}</a>{{else if this.onAPlayer}}<a href="/playersid/{{this.playerId}}">View Player</a>{{/if}}  {{#if this.factionName}}<a href="/factions/{{this.factionName}}">{{this.factionName}}</a>{{else if this.onAFaction}}<a href="/factionsid/{{this.factionId}}">View Faction</a><p>{{/if}}
+      <div class="comment-box">{{#if ../currentUser.mod}}  <div class="admin-buttons-comment">  <!--Delete--><form method="POST" action="/comments/delete/{{this._id}}"><button class="delete-button" type="submit"><i class="material-icons">delete</i></button></form>  </div>  {{/if}}{{#if this.playerUserName}}<a href="players/{{this.playerUserName}}"><b>{{this.playerUserName}}</b></a>{{else if this.onAPlayer}}<a href="/playersid/{{this.playerId}}">View Player</a>{{/if}}  {{#if this.factionName}}<a href="/factions/{{this.factionName}}"><b>{{this.factionName}}</b></a>{{else if this.onAFaction}}<a href="/factionsid/{{this.factionId}}">View Faction</a><p>{{/if}}
         By: <a href="/profiles/{{this.username}}">{{this.username}}</a></p>
         <p><b>{{this.title}}</b></p>
         <p>{{this.content}}</p>
