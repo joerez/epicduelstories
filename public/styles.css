@@ -2,6 +2,10 @@ nav {
   padding-left: 1rem;
 }
 
+.theDayDate {
+  color: #2980b9;
+}
+
 .auth-page {
   height: 95vh;
   width: 100%;

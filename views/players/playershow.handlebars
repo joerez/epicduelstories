@@ -29,6 +29,7 @@
       <div class="comment-box">{{#if ../../currentUser.mod}}  <div class="admin-buttons-comment">  <!--Delete--><form method="POST" action="/comments/delete/{{this._id}}"><button class="delete-button" type="submit"><i class="material-icons">delete</i></button></form>  </div>  {{/if}}<p>By: <a href="/profiles/{{this.username}}">{{this.username}}</a></p>
         <p><b>{{this.title}}</b></p>
         <p>{{this.content}}</p>
+        {{#if this.day}}<p class="theDayDate">{{this.day}}</p>{{/if}}
       </div>
     {{/each}}
   </div>

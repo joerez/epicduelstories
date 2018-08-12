@@ -21,6 +21,8 @@ const CommentSchema = new Schema({
     commentLength: String,
     updatedAt: Date,
     initialTime: String,
+    day: String,
+    initialTime: String
 });
 
 module.exports = mongoose.model('Comments', CommentSchema);

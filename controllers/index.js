@@ -5,6 +5,7 @@ const Player = require('../models/player');
 const Faction = require('../models/faction');
 const Comment = require('../models/comment');
 
+const moment = require('moment');
 
 module.exports = (app) => {
 
@@ -34,6 +35,13 @@ module.exports = (app) => {
     Player.find({pending : false}).then((players) => {
       Faction.find({pending : false}).then((factions) => {
         Comment.find({}).then((comments) => {
+
+          for (let i = 0; i < comments.length; i++) {
+            comments[i].day = moment(comments[i].initialTime, "YYYYMMDD h:mm:ss a").fromNow();
+            comments[i].save();
+          }
+
+
           Player.find({_id : comments.playerId}).then((playerName) => {
 
 

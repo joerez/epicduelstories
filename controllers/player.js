@@ -6,6 +6,7 @@ const Comment = require('../models/comment')
 
 const requireLogin = require('../middleware/requireLogin');
 
+const moment = require('moment');
 
 let Recaptcha = require('express-recaptcha');
 var recaptcha = new Recaptcha('6Ld9VWgUAAAAANMg2fEBUmbC48-Is_KZEFJ2XbBL', '6Ld9VWgUAAAAAOPH-QfoQ6j8_5PP1na-6yKNuWTB');
@@ -64,6 +65,11 @@ app.get('/players/:playername', (req, res) => {
   Player.find({username : req.params.playername}).then((players) => {
     console.log(players.id);
   Comment.find({ playerId : players[0].id }).then((comments) => {
+
+    for (let i = 0; i < comments.length; i++) {
+      comments[i].day = moment(comments[i].initialTime, "YYYYMMDD h:mm:ss a").fromNow();
+      comments[i].save();
+    }
 
 
   let currentUser;
