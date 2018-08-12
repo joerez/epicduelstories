@@ -7,6 +7,8 @@ const CommentSchema = new Schema({
     content: String,
     user: {type: Schema.Types.ObjectId, ref: 'User', required: true},
     playerId: {type: Schema.Types.ObjectId, ref: 'Player'},
+    playerUserName: String,
+    factionName: String,
     factionId: {type: Schema.Types.ObjectId, ref: 'Faction'},
     commentId: {type: Schema.Types.ObjectId, ref: 'Comment'},
     commentIdStr: String,

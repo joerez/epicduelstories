@@ -20,8 +20,9 @@ app.post('/players/:playerid/new', requireLogin, (req, res) => {
        if(!error)
            //success code
            {
-             const commentData = {...req.body, user: req.user._id, onAPlayer: true}
              Player.findById(req.params.playerid).then((player) => {
+               const commentData = {...req.body, user: req.user._id, onAPlayer: true, playerUserName: player.username}
+
                Comment.create(commentData).then((comment) => {
                  comment.save();
                  res.redirect('back')
@@ -50,8 +51,9 @@ app.post('/factions/:factionid/new', requireLogin, (req, res) => {
        if(!error)
            //success code
            {
-             const commentData = {...req.body, user: req.user._id, onAFaction: true}
              Faction.findById(req.params.factionid).then((faction) => {
+               const commentData = {...req.body, user: req.user._id, onAFaction: true, factionName: faction.name}
+
                Comment.create(commentData).then((comment) => {
                  comment.save();
                  res.redirect('back')

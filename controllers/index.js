@@ -34,17 +34,19 @@ module.exports = (app) => {
     Player.find({pending : false}).then((players) => {
       Faction.find({pending : false}).then((factions) => {
         Comment.find({}).then((comments) => {
+          Player.find({_id : comments.playerId}).then((playerName) => {
 
 
     if (req.user) {
       User.findById(req.user._id, (err, user) => {
-        res.render('index/recent', { currentUser: user, players, factions, comments });
+        res.render('index/recent', { currentUser: user, players, factions, comments, playerName });
       })
     } else {
-    res.render('index/recent', { players, factions, comments });
+    res.render('index/recent', { players, factions, comments, playerName });
     }
   })
   })
+})
 })
 
 })
