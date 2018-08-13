@@ -97,7 +97,6 @@ p {
   background: #ecf0f1;
   margin-right: 1rem;
   margin-left: .5rem;
-  perspective: 800px;
 }
 
 .faction-section {
@@ -105,7 +104,6 @@ p {
   min-height: 60rem;
   background: #ecf0f1;
   margin-right: .5rem;
-  perspective: 800px;
 }
 
 .center-button {
