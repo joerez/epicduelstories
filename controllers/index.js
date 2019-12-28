@@ -13,7 +13,12 @@ module.exports = (app) => {
       let currentUser;
 
       Player.find({pending : false}).then((players) => {
+
+        players.sort((a, b) => a.username.localeCompare(b.username));
+
+
         Faction.find({pending : false}).then((factions) => {
+          factions.sort((a, b) => a.name.localeCompare(b.name));
 
 
       if (req.user) {
